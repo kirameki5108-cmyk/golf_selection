@@ -12,6 +12,7 @@ scores_input = st.text_input("スコア（例: 72,70,71）")
 rates_input = st.text_input("コースレート（例: 71.5,71.5,72.0）")
 sloperates_input = st.text_input("スロープレート（例: 66,112,143) ")
 target_input = st.text_input("目標スコア（例: 72）")
+q = 0.8
 
 if st.button("評価する"):
     try:
@@ -32,6 +33,7 @@ if st.button("評価する"):
             std = max(std_u, 0.5)
             scale = std * np.sqrt(1 + 1 / n)
             prob = t.cdf((T - mean) / scale, df=n - 1)
+            quantile = mean + t.ppf(q, df=n - 1) * scale
 
             st.success("評価結果")
             st.write(f"選手名")
@@ -39,5 +41,6 @@ if st.button("評価する"):
             st.write(f"・平均（(スコア − レート)*113/スロープレート）：{mean:.2f}")
             st.write(f"・安定度（標準偏差）：{std_u:.2f}")
             st.write(f"・目標以下で回る確率：{prob:.3f}")
+            st.write(f"・80%の確率で、この値以下（安全側評価）：{quantile:.2f}")
     except Exception as e:
         st.error(str(e))
