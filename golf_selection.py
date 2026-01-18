@@ -23,7 +23,7 @@ if st.button("評価する"):
             y = scores - rates
             mean = y.mean()
             std_u = y.std(ddof=1)
-            std = max(std, 0.5)
+            std = max(std_u, 0.5)
             scale = std * np.sqrt(1 + 1 / n)
             prob = t.cdf((0 - mean) / scale, df=n - 1)
 
