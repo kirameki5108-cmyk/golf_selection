@@ -31,7 +31,7 @@ if st.button("評価する"):
             std_u = y.std(ddof=1)
             std = max(std_u, 0.5)
             scale = std * np.sqrt(1 + 1 / n)
-            prob = t.cdf((0 - mean) / scale, df=n - 1)
+            prob = t.cdf((T - mean) / scale, df=n - 1)
 
             st.success("評価結果")
             st.write(f"選手名")
