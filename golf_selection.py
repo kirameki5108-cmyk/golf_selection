@@ -38,6 +38,6 @@ if st.button("評価する"):
             st.write(f"・提出ラウンド数：{n}")
             st.write(f"・平均（(スコア − レート)*113/スロープレート）：{mean:.2f}")
             st.write(f"・安定度（標準偏差）：{std_u:.2f}")
-            st.write(f"・目標以上で回る確率：{prob:.3f}")
+            st.write(f"・目標以下で回る確率：{prob:.3f}")
     except Exception as e:
         st.error(str(e))
