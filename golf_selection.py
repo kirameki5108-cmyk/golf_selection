@@ -22,7 +22,7 @@ if st.button("評価する"):
         if n < 2:
             st.error("2ラウンド以上必要です")
         else:
-            y = (scores - rates) * 113 * sloperates
+            y = (scores - rates) * 113 / sloperates
             mean = y.mean()
             std_u = y.std(ddof=1)
             std = max(std_u, 0.5)
