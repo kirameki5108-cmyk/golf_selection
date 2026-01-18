@@ -22,7 +22,7 @@ if st.button("評価する"):
         else:
             y = scores - rates
             mean = y.mean()
-            std = y.std(ddof=1)
+            std_u = y.std(ddof=1)
             std = max(std, 0.5)
             scale = std * np.sqrt(1 + 1 / n)
             prob = t.cdf((0 - mean) / scale, df=n - 1)
@@ -30,7 +30,7 @@ if st.button("評価する"):
             st.success("評価結果")
             st.write(f"・提出ラウンド数：{n}")
             st.write(f"・平均（スコア − レート）：{mean:.2f}")
-            st.write(f"・安定度（標準偏差）：{std:.2f}")
+            st.write(f"・安定度（標準偏差）：{std_u:.2f}")
             st.write(f"・レート以上で回る確率：{prob:.3f}")
     except Exception as e:
         st.error(str(e))
