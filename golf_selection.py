@@ -26,11 +26,10 @@ if st.button("評価する"):
             scale = std * np.sqrt(1 + 1 / n)
             prob = t.cdf((0 - mean) / scale, df=n - 1)
 
-            st.success(f"""
-            提出ラウンド数: {n}
-            平均（スコア − レート）: {mean:.2f}
-            安定度（標準偏差）: {std:.2f}
-            レート以上で回る確率: {prob:.3f}
-            """)
+            st.success("評価結果")
+            st.write(f"・提出ラウンド数：{n}")
+            st.write(f"・平均（スコア − レート）：{mean:.2f}")
+            st.write(f"・安定度（標準偏差）：{std:.2f}")
+            st.write(f"・レート以上で回る確率：{prob:.3f}")
     except Exception as e:
         st.error(str(e))
