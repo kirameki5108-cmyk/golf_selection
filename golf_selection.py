@@ -4,7 +4,7 @@ from scipy.stats import t
 
 st.title("ゴルフ部 大会メンバー選考")
 
-st.write("選手のスコアとコースレートを入力してください（カンマ区切り）")
+st.write("選手のスコアとレートを入力してください（カンマ区切り）")
 
 name = st.text_input("選手名")
 
@@ -31,7 +31,7 @@ if st.button("評価する"):
 
             st.success("評価結果")
             st.write(f"・提出ラウンド数：{n}")
-            st.write(f"・平均（スコア − レート）：{mean:.2f}")
+            st.write(f"・平均（(スコア − レート)*113/スロープレート）：{mean:.2f}")
             st.write(f"・安定度（標準偏差）：{std_u:.2f}")
             st.write(f"・レート以上で回る確率：{prob:.3f}")
     except Exception as e:
